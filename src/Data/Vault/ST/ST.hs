@@ -13,7 +13,7 @@ module Data.Vault.ST.LAZINESS (
     ) where
 
 import Data.Monoid (Monoid(..))
-import Data.Semigroup
+import Data.Semigroup (Semigroup(..))
 import Prelude hiding (lookup)
 import Control.Applicative hiding (empty)
 import Control.Monad.ST
