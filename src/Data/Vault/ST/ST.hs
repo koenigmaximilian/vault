@@ -13,6 +13,7 @@ module Data.Vault.ST.LAZINESS (
     ) where
 
 import Data.Monoid (Monoid(..))
+import Data.Semigroup
 import Prelude hiding (lookup)
 import Control.Applicative hiding (empty)
 import Control.Monad.ST
@@ -37,10 +38,13 @@ import Data.Unique.Really
 {-----------------------------------------------------------------------------
     Vault
 ------------------------------------------------------------------------------}
+    
+instance Semigroup (Vault s) where
+    (<>) = union
 
 instance Monoid (Vault s) where
     mempty = empty
-    mappend = union
+    mappend = (<>)
 
 -- | The empty vault.
 empty :: Vault s
